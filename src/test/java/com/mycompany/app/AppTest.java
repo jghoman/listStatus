@@ -33,6 +33,10 @@ public class AppTest {
       FileStatus[] ls = webHdfs.listStatus(new Path("/"));
       assertEquals(4, ls.length);
 
+      ls = webHdfs.listStatus(new Path("/f1"));
+      assertEquals(1, ls.length);
+      assertEquals("f1", ls[0].getPath().getName());
+
     } finally {
       if (webHdfs != null) {
         webHdfs.close();
